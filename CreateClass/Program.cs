@@ -10,6 +10,11 @@ namespace CreateClass
     {
         static void Main(string[] args)
         {
+            Person janeDoe = new Person("Jane Doe", new DateTime(1994, 4, 8), Gender.Female);
+            Console.WriteLine(janeDoe.ToString());
+
+            Person johnDoe = new Person("John Doe", new DateTime(1984, 6, 18), Gender.Male);
+            Console.WriteLine(johnDoe.ToString());
         }
     }
 }
