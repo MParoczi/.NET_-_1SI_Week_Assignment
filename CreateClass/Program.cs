@@ -16,12 +16,21 @@ namespace CreateClass
             Person johnDoe = new Person("John Doe", new DateTime(1984, 6, 18), Gender.Male);
             Console.WriteLine(johnDoe.ToString());
 
-            Employee johnWick = new Employee("John Wick", new DateTime(1964, 9, 2), Gender.Male, "Assassin");
+            Employee johnWick = new Employee("John Wick", new DateTime(1964, 9, 2), Gender.Male, 1000, "Assassin");
             Console.WriteLine($"Please provide a salary for {johnWick.Name}:");
 
             ValidateUserProvidedSalary(johnWick);
 
+            johnWick.Room = new Room(420);
+
             Console.WriteLine(johnWick.ToString());
+
+            Employee Kovacs = new Employee("Géza", DateTime.Now, Gender.Male, 1000, "léhűtő");
+            Kovacs.Room = new Room(111);
+            Employee Kovacs2 = (Employee)Kovacs.Clone();
+            Kovacs2.Room.RoomNumber = 112;
+            Console.WriteLine(Kovacs.ToString());
+            Console.WriteLine(Kovacs2.ToString());
 
         }
 

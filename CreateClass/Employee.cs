@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CreateClass
 {
-    class Employee : Person
+    class Employee : Person, ICloneable
     {
         public Room Room { get; set; }
         private decimal _salary;
@@ -29,14 +29,22 @@ namespace CreateClass
 
         public string Profession { get; set; }
 
-        public Employee(string name, DateTime birthDate, Gender gender, string profession) : base(name, birthDate, gender)
+        public Employee(string name, DateTime birthDate, Gender gender, decimal salary, string profession) : base(name, birthDate, gender)
         {
             this.Profession = profession;
+            this.Salary = salary;
         }
 
         public override string ToString()
         {
-            return $"{base.ToString()}The profession of {this.Name} is {this.Profession}\nwhich for {this.Name} gets {this.Salary} dollar";
+            return $"{base.ToString()}The profession of {this.Name} is {this.Profession}\nwhich for {this.Name} gets {this.Salary} dollar\nRoom where you can find this person: {this.Room.RoomNumber}";
+        }
+
+        public object Clone()
+        {
+            Employee newEmployee = (Employee)this.MemberwiseClone();
+            newEmployee.Room = new Room(Room.RoomNumber);
+            return newEmployee;
         }
     }
 }
