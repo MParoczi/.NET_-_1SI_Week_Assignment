@@ -15,6 +15,32 @@ namespace CreateClass
 
             Person johnDoe = new Person("John Doe", new DateTime(1984, 6, 18), Gender.Male);
             Console.WriteLine(johnDoe.ToString());
+
+            Employee johnWick = new Employee("John Wick", new DateTime(1964, 9, 2), Gender.Male, "Assassin");
+            Console.WriteLine($"Please provide a salary for {johnWick.Name}:");
+
+            ValidateUserProvidedSalary(johnWick);
+
+            Console.WriteLine(johnWick.ToString());
+
+        }
+
+        private static void ValidateUserProvidedSalary(Employee employee)
+        {
+            while (true)
+            {
+                try
+                {
+                    employee.Salary = Convert.ToDecimal(Console.ReadLine());
+                    break;
+                }
+                catch (ArgumentException)
+                {
+                    Console.WriteLine("The provided salary is below zero. Please try again:");
+                    continue;
+                }
+
+            }
         }
     }
 }
