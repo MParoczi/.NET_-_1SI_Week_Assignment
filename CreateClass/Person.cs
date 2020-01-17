@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace CreateClass
 {
+ /// <summary>
+ /// This is the Person class.
+ /// With the help of Person class we can instantiante new people.
+ /// We can get information about the person with the ToString() method.
+ /// </summary>
     class Person
     {
         public string Name { get; set; }
